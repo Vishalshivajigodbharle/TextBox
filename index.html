@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Text Box</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1 align="center" class="heading">Text Box</h1>
+	<div class="container" align="center"> 
+		<form class="textboxform">
+			<label>Enter your Text Below</label>
+			<br><br>
+			<textarea id="text" rows="10" cols="70" onkeyup="updateInfo()" autofocus ></textarea><br><br>
+			<button type="button" onclick="transformUpperCase()">UPPERCASE</button>
+			<button type="button" onclick="transformLowerCase()">LOWERCASE</button>
+			<button type="button" onclick="findText()">FIND</button>
+			<button type="button" onclick="changeColor()">CHANGE COLOR</button>
+			<button type="button" onclick="textUnderline()">UNDERLINE</button>
+			<button type="button" onclick="copyText()">COPY</button>
+			<h3 id="textinfo"></h3>
+
+		</form>
+	</div>
+	<script type="text/javascript">
+		let text=document.getElementById("text");
+		let textInfo=document.getElementById("textinfo");
+		let clr="black";
+		function transformUpperCase(){
+			text.value =text.value.toUpperCase();
+		}
+		function transformLowerCase(){
+			text.value =text.value.toLowerCase();
+		}
+		function findText(){
+			let searchText=prompt("enter the text :");
+			if(text.value.includes(searchText))
+			{
+				alert(`search Text "${searchText}"is present`);
+			}else{
+				alert(`search Text "${searchText}"is not present`);
+			}
+		}
+		function changeColor(){
+				clr=prompt(("Enter your Favourite color").toLowerCase());
+			text.style.color=clr;
+		}
+		function textUnderline(){
+			text.style.textDecoration=`underline 2px  ${clr}`;
+		}
+		function copyText(){
+			navigator.clipboard.writeText(text.value);
+		}
+		function updateInfo(){
+			
+			let numberOfWords = text.value.trim().split(" ").length;
+			
+			textInfo.innerHTML = `${numberOfWords} words | ${text.value.length} characters.`;
+		}
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Text Box</title>
+	<link rel="stylesheet" type="text/css" href="textboxstyle.css">
+</head>
+<body>
+	<h1 align="center" class="heading">Text Box</h1>
+	<div class="container" align="center"> 
+		<form class="textboxform">
+			<label>Enter your Text Below</label>
+			<br><br>
+			<textarea id="text" rows="10" cols="70" onkeyup="updateInfo()" autofocus ></textarea><br><br>
+			<button type="button" onclick="transformUpperCase()">UPPERCASE</button>
+			<button type="button" onclick="transformLowerCase()">LOWERCASE</button>
+			<button type="button" onclick="findText()">FIND</button>
+			<button type="button" onclick="changeColor()">CHANGE COLOR</button>
+			<button type="button" onclick="textUnderline()">UNDERLINE</button>
+			<button type="button" onclick="copyText()">COPY</button>
+			<div id="textinfo"></div>
+		</form>
+	</div>
+	<script type="text/javascript">
+		let text = document.getElementById("text");
+		let textInfo = document.getElementById("textinfo");
+		let clr;
+
+		function transformUpperCase() {
+			text.value = text.value.toUpperCase();
+			updateInfo();
+		}
+
+		function transformLowerCase() {
+			text.value = text.value.toLowerCase();
+			updateInfo();
+		}
+
+		function findText() {
+			let searchText = prompt("Enter the text to find:");
+			if (searchText) {
+				if (text.value.includes(searchText)) {
+					alert(`Text "${searchText}" found.`);
+				} else {
+					alert(`Text "${searchText}" not found.`);
+				}
+			}
+		}
+
+		function changeColor() {
+			clr = prompt("Enter your favorite color:");
+			if (clr) {
+				text.style.color = clr;
+				updateInfo();
+			}
+		}
+
+		function textUnderline() {
+			if (clr) {
+				text.style.textDecoration = `underline 2px solid ${clr}`;
+				updateInfo();
+			}
+		}
+
+		function copyText() {
+			navigator.clipboard.writeText(text.value)
+				.then(() => {
+					alert("Text copied to clipboard.");
+				})
+				.catch((error) => {
+					console.error("Error copying text:", error);
+				});
+		}
+
+		function updateInfo() {
+			let numberOfWords = text.value.trim().split(/\s+/).length;
+			let numberOfCharacters = text.value.length;
+			textInfo.innerHTML = `${numberOfWords} words | ${numberOfCharacters} characters`;
+		}
+	</script>
+</body>
+</html>
+ -->
